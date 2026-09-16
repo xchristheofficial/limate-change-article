@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Storm We Created · Climate Change</title>
+  <!-- Google Fonts for clean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #1a2e3b;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .article-card {
+      max-width: 880px;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      padding: 3rem 3rem 3.5rem;
+      margin: 1.5rem 0 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: box-shadow 0.2s ease;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem 0.75rem;
+      }
+      .article-card {
+        padding: 2rem 1.5rem 2.5rem;
+        border-radius: 24px;
+      }
+    }
+
+    /* Header / byline area */
+    .article-header {
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #e6edf3;
+      padding-bottom: 1.5rem;
+    }
+
+    .category-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1f6e43;
+      background: #e2f0e9;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: clamp(2.1rem, 6vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0b1e2b;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .byline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1rem;
+      font-size: 0.95rem;
+      color: #4b5f6b;
+      margin-top: 0.25rem;
+    }
+
+    .byline .author {
+      font-weight: 600;
+      color: #1f4e3d;
+    }
+
+    .byline .divider {
+      color: #b8c9d4;
+      font-weight: 300;
+    }
+
+    /* Article body */
+    .article-content {
+      font-size: 1.125rem;
+      color: #1f3a47;
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-content h2 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #0b1e2b;
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .article-content h2:first-of-type {
+      margin-top: 1rem;
+    }
+
+    /* Intro paragraph gets a subtle lead style */
+    .lead {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #1e3b4a;
+      border-left: 5px solid #3a9b6e;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      background: #f9fdfb;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 16px 16px 0;
+    }
+
+    /* Pull quote or emphasis block */
+    .emphasis-block {
+      background: #f0f7f4;
+      padding: 1.75rem 2rem;
+      border-radius: 24px;
+      margin: 2.5rem 0;
+      border-left: 6px solid #2d7a54;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #113b2b;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Footer / meta */
+    .article-footer {
+      margin-top: 3rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid #d9e3ea;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #5a6f7c;
+    }
+
+    .footer-tag {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: #eef3f7;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1c4c3c;
+      letter-spacing: 0.01em;
+    }
+
+    /* Utility */
+    .text-accent {
+      color: #1f6e43;
+      font-weight: 600;
+    }
+
+    /* Print-friendly */
+    @media print {
+      body {
+        background: white;
+        padding: 0.5in;
+      }
+      .article-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        padding: 0.5in;
+      }
+      .article-footer {
+        border-top: 1px solid #aaa;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="article-card">
+    <!-- Header with category, title, byline -->
+    <header class="article-header">
+      <div class="category-tag">Climate · Analysis</div>
+      <h1>The Storm We Created: Understanding the Causes and Effects of Climate Change</h1>
+      <div class="byline">
+        <span class="author">By Daniel Kariuki</span>
+        <span class="divider">|</span>
+        <span>EcoWatch Magazine</span>
+        <span class="divider">|</span>
+        <span>March 2025</span>
+      </div>
+    </header>
+
+    <!-- Full article content, exactly as provided -->
+    <div class="article-content">
+      <p class="lead">
+        If you ask your grandparents whether the weather feels different now than when they were young, chances are they'll say yes. Longer dry spells. Heavier rains when it does rain. Hotter afternoons that seem to stretch on forever. This isn't just an old person's memory playing tricks — it's climate change, and it's one of the most pressing issues facing our generation today.
+      </p>
+
+      <h2>What's Actually Causing It?</h2>
+      <p>
+        At its core, climate change is caused by an increase in greenhouse gases in our atmosphere, and human beings are largely responsible for this. When we burn fossil fuels like coal, oil, and natural gas to power our cars, factories, and homes, we release carbon dioxide into the air. This gas acts like a blanket around the Earth, trapping heat that would otherwise escape into space. The more we burn, the thicker that blanket gets, and the warmer our planet becomes.
+      </p>
+      <p>
+        Deforestation makes things worse. Trees absorb carbon dioxide, so when we cut down forests for farming, logging, or urban development, we're removing one of nature's best tools for cleaning our air. At the same time, we're releasing the carbon that was stored in those trees.
+      </p>
+      <p>
+        Agriculture plays a role too. Livestock farming, especially cattle, produces methane, another powerful greenhouse gas. Add to this the waste we generate, the industrial processes we rely on, and our growing energy demands, and it becomes clear why global temperatures keep rising year after year.
+      </p>
+
+      <h2>The Effects We're Already Living Through</h2>
+      <p>
+        Climate change isn't some distant threat waiting to happen — it's already here, and its effects touch nearly every part of life.
+      </p>
+      <p>
+        Weather patterns have become unpredictable and extreme. Some regions face intense droughts that destroy crops and dry up water sources, while others are hit with catastrophic flooding and stronger hurricanes. Farmers who once relied on predictable seasons now struggle to know when to plant or harvest, which threatens food security for millions of people.
+      </p>
+      <p>
+        The ice caps and glaciers are melting at alarming rates, causing sea levels to rise. This puts coastal cities and small island nations at real risk of disappearing underwater in the coming decades. For places in the Caribbean and other low-lying regions, this isn't a hypothetical — it's a genuine threat to homes, economies, and entire ways of life.
+      </p>
+      <p>
+        Wildlife is suffering too. As habitats shift or disappear, countless species struggle to adapt or migrate, and many face extinction. Coral reefs, which support a huge portion of marine life, are dying off due to warmer, more acidic oceans in a process called coral bleaching.
+      </p>
+      <p>
+        Human health is affected as well. Rising temperatures contribute to heat-related illnesses, the spread of diseases like malaria and dengue fever into new areas, and worsening air quality that triggers respiratory problems. Vulnerable communities, especially those in developing countries, often bear the heaviest burden despite contributing the least to the problem.
+      </p>
+
+      <h2>Why This Matters to Us</h2>
+      <p>
+        It's easy to feel like climate change is too big a problem for one person to solve, but that mindset is exactly what allows it to continue unchecked. Small actions — reducing waste, conserving energy, supporting reforestation efforts, and pushing for better environmental policies — add up when enough people commit to them.
+      </p>
+      <p>
+        Climate change is not just a scientific issue; it's a human one. It affects the food we eat, the air we breathe, and the future we're building for the next generation. Understanding its causes and effects is the first step toward becoming part of the solution rather than remaining part of the problem.
+      </p>
+      <p>
+        The planet has been sending warnings for decades. The real question now is whether we're finally ready to listen.
+      </p>
+
+      <!-- subtle emphasis on the closing line (optional but keeps design) -->
+      <div class="emphasis-block">
+        “The planet has been sending warnings for decades. The real question now is whether we're finally ready to listen.”
+      </div>
+    </div>
+
+    <!-- Footer with tags / publication info -->
+    <footer class="article-footer">
+      <div class="footer-tag">
+        <span class="pill">#ClimateChange</span>
+        <span class="pill">#Environment</span>
+        <span class="pill">#EcoWatch</span>
+      </div>
+      <div class="footer-tag">
+        <span>© 2025 EcoWatch Magazine</span>
+      </div>
+    </footer>
+  </article>
+
+  <!-- tiny note: the article is complete and self-contained -->
+</body>
+</html>
