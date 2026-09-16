@@ -1,285 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Storm We Created · Climate Change</title>
-  <!-- Google Fonts for clean typography -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>The Storm We Created — Understanding Climate Change | EcoWatch</title>
+  <meta name="description" content="Climate change isn't a distant threat. It's here. A clear look at its causes, its effects, and why it matters to every one of us." />
+  <meta name="author" content="Daniel Kariuki" />
+  <meta name="keywords" content="climate change, global warming, greenhouse gases, deforestation, sea level rise, EcoWatch" />
+  <link rel="canonical" href="https://storm-notes.onrender.com/" />
+
+  <!-- Favicon (inline SVG — no extra file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231f6e43'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='900' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Storm We Created: Understanding the Causes and Effects of Climate Change" />
+  <meta property="og:description" content="Climate change isn't a distant threat. It's already here — and its effects touch nearly every part of life." />
+  <meta property="og:url" content="https://storm-notes.onrender.com/" />
+  <meta property="og:site_name" content="EcoWatch Magazine" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1561553590-267fc716698a?w=1200&h=630&fit=crop" />
+  <meta property="article:published_time" content="2025-03-15T08:00:00Z" />
+  <meta property="article:author" content="Daniel Kariuki" />
+  <meta property="article:section" content="Climate" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Storm We Created: Understanding Climate Change" />
+  <meta name="twitter:description" content="Climate change isn't a distant threat. It's already here." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1561553590-267fc716698a?w=1200&h=630&fit=crop" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1a2e3b;
+      --text-soft: #4b5f6b;
+      --heading: #0b1e2b;
+      --accent: #1f6e43;
+      --accent-soft: #e2f0e9;
+      --rule: #e6edf3;
+      --maxw: 760px;
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1720;
+        --card: #16212c;
+        --text: #d7e2ea;
+        --text-soft: #8ba1b1;
+        --heading: #f2f7fb;
+        --accent: #6ed49e;
+        --accent-soft: #1d3a2c;
+        --rule: #24333f;
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      background-color: #f5f7fa;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      color: #1a2e3b;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .article-card {
-      max-width: 880px;
-      width: 100%;
-      background-color: #ffffff;
-      border-radius: 32px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-      padding: 3rem 3rem 3.5rem;
-      margin: 1.5rem 0 3rem;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      transition: box-shadow 0.2s ease;
+    /* ===== Reading progress bar ===== */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #1f6e43, #6ed49e);
+      z-index: 100;
+      transition: width 0.1s ease-out;
     }
+
+    /* ===== Masthead ===== */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--card);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: saturate(180%) blur(8px);
+    }
+
+    .masthead-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Merriweather', Georgia, serif;
+      font-weight: 900;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      color: var(--heading);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--accent); }
 
     @media (max-width: 640px) {
-      body {
-        padding: 1rem 0.75rem;
-      }
-      .article-card {
-        padding: 2rem 1.5rem 2.5rem;
-        border-radius: 24px;
-      }
+      .nav-links { display: none; }
     }
 
-    /* Header / byline area */
-    .article-header {
-      margin-bottom: 2rem;
-      border-bottom: 2px solid #e6edf3;
-      padding-bottom: 1.5rem;
+    /* ===== Article ===== */
+    .article-wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
     }
 
-    .category-tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: #1f6e43;
-      background: #e2f0e9;
-      padding: 0.25rem 0.9rem;
-      border-radius: 40px;
-      margin-bottom: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
 
     h1 {
       font-family: 'Merriweather', Georgia, serif;
-      font-size: clamp(2.1rem, 6vw, 3.1rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: #0b1e2b;
+      font-weight: 900;
+      font-size: clamp(2rem, 5.5vw, 2.85rem);
+      line-height: 1.15;
+      color: var(--heading);
+      letter-spacing: -0.015em;
       margin-bottom: 1rem;
-      letter-spacing: -0.01em;
     }
 
-    .byline {
+    .dek {
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+      margin-bottom: 1.75rem;
+      font-weight: 400;
+    }
+
+    .byline-row {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 0.5rem 1rem;
-      font-size: 0.95rem;
-      color: #4b5f6b;
-      margin-top: 0.25rem;
+      gap: 0.85rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-soft);
     }
 
-    .byline .author {
-      font-weight: 600;
-      color: #1f4e3d;
-    }
-
-    .byline .divider {
-      color: #b8c9d4;
-      font-weight: 300;
-    }
-
-    /* Article body */
-    .article-content {
-      font-size: 1.125rem;
-      color: #1f3a47;
-    }
-
-    .article-content p {
-      margin-bottom: 1.5rem;
-    }
-
-    .article-content h2 {
-      font-family: 'Merriweather', Georgia, serif;
-      font-size: 1.7rem;
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f6e43, #6ed49e);
+      display: grid;
+      place-items: center;
+      color: white;
       font-weight: 700;
-      color: #0b1e2b;
-      margin: 2.5rem 0 1rem;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .byline-text strong {
+      display: block;
+      color: var(--heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .byline-text small { font-size: 0.82rem; }
+    .dot { margin: 0 0.5rem; opacity: 0.5; }
+
+    figure.hero { margin: 0 -1.5rem 2.5rem; }
+    @media (min-width: 800px) {
+      figure.hero { margin: 0 0 2.5rem; border-radius: 16px; overflow: hidden; }
+    }
+    figure.hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    figure.hero figcaption {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      padding: 0.6rem 1.5rem 0;
+      line-height: 1.5;
+    }
+    @media (min-width: 800px) {
+      figure.hero figcaption { padding: 0.6rem 0 0; }
+    }
+
+    .article-body p {
+      font-size: 1.13rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .article-body > p:first-of-type::first-letter {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 3.6rem;
+      font-weight: 900;
+      float: left;
+      line-height: 0.9;
+      padding: 0.35rem 0.6rem 0 0;
+      color: var(--accent);
+    }
+
+    .article-body h2 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin: 2.75rem 0 1rem;
       letter-spacing: -0.01em;
       line-height: 1.3;
     }
 
-    .article-content h2:first-of-type {
-      margin-top: 1rem;
-    }
-
-    /* Intro paragraph gets a subtle lead style */
-    .lead {
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: #1e3b4a;
-      border-left: 5px solid #3a9b6e;
-      padding-left: 1.5rem;
-      margin-bottom: 2rem;
-      background: #f9fdfb;
-      padding: 1.25rem 1.5rem;
-      border-radius: 0 16px 16px 0;
-    }
-
-    /* Pull quote or emphasis block */
-    .emphasis-block {
-      background: #f0f7f4;
-      padding: 1.75rem 2rem;
-      border-radius: 24px;
-      margin: 2.5rem 0;
-      border-left: 6px solid #2d7a54;
+    .pullquote {
+      border-left: 4px solid var(--accent);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 2.25rem 0;
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.35rem;
       font-style: italic;
-      font-size: 1.2rem;
-      color: #113b2b;
-      font-weight: 500;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      color: var(--heading);
+      line-height: 1.45;
     }
 
-    /* Footer / meta */
-    .article-footer {
-      margin-top: 3rem;
-      padding-top: 1.75rem;
-      border-top: 1px solid #d9e3ea;
+    /* ===== Share row ===== */
+    .share-row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
       align-items: center;
-      font-size: 0.9rem;
-      color: #5a6f7c;
+      gap: 0.6rem;
+      margin: 3rem 0 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .share-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      margin-right: 0.4rem;
+    }
+    .share-btn {
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--text);
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .share-btn:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
-    .footer-tag {
+    /* ===== Author box ===== */
+    .author-box {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 1.5rem;
       display: flex;
-      gap: 0.75rem;
+      gap: 1rem;
+      align-items: flex-start;
+      margin: 2.5rem 0 1rem;
+    }
+    .author-box .avatar { width: 56px; height: 56px; font-size: 1.1rem; }
+    .author-box h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 0.2rem;
+    }
+    .author-box p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ===== Related articles ===== */
+    .related {
+      margin: 3rem 0 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+    .related h2 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--heading);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .related-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.15);
+    }
+    .related-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+    .related-card-body { padding: 0.9rem 1rem 1.1rem; }
+    .related-card .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .related-card h3 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.35;
+      color: var(--heading);
+      margin-top: 0.35rem;
+      font-weight: 700;
+    }
+
+    /* ===== Newsletter ===== */
+    .newsletter {
+      background: linear-gradient(135deg, var(--accent-soft), transparent);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      margin: 3rem 0 1rem;
+      text-align: center;
+    }
+    .newsletter h3 {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--heading);
+      margin-bottom: 0.4rem;
+    }
+    .newsletter p {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 1.1rem;
+    }
+    .newsletter form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 420px;
+      margin: 0 auto;
       flex-wrap: wrap;
     }
-
-    .pill {
-      background: #eef3f7;
-      padding: 0.25rem 1rem;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #1c4c3c;
-      letter-spacing: 0.01em;
+    .newsletter input {
+      flex: 1 1 200px;
+      padding: 0.7rem 1rem;
+      border-radius: 100px;
+      border: 1px solid var(--rule);
+      background: var(--card);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
     }
-
-    /* Utility */
-    .text-accent {
-      color: #1f6e43;
+    .newsletter input:focus { border-color: var(--accent); }
+    .newsletter button {
+      padding: 0.7rem 1.4rem;
+      border-radius: 100px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-family: inherit;
       font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity 0.15s;
     }
+    .newsletter button:hover { opacity: 0.9; }
 
-    /* Print-friendly */
+    /* ===== Footer ===== */
+    .site-footer {
+      border-top: 1px solid var(--rule);
+      margin-top: 4rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+    .site-footer a { color: var(--accent); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ===== Back to top ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 60;
+      box-shadow: 0 6px 16px -4px rgba(0,0,0,0.25);
+      font-size: 1.1rem;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-top:hover { transform: translateY(-2px); }
+
+    /* ===== Print ===== */
     @media print {
-      body {
-        background: white;
-        padding: 0.5in;
-      }
-      .article-card {
-        box-shadow: none;
-        border: 1px solid #ccc;
-        padding: 0.5in;
-      }
-      .article-footer {
-        border-top: 1px solid #aaa;
-      }
+      .masthead, .share-row, .site-footer, .progress-bar,
+      .back-to-top, .newsletter, .related { display: none; }
+      body { background: white; color: black; }
+      .article-wrap { max-width: 100%; padding: 0; }
+      .article-body p, .article-body h2 { color: black; }
     }
   </style>
 </head>
 <body>
-  <article class="article-card">
-    <!-- Header with category, title, byline -->
-    <header class="article-header">
-      <div class="category-tag">Climate · Analysis</div>
-      <h1>The Storm We Created: Understanding the Causes and Effects of Climate Change</h1>
-      <div class="byline">
-        <span class="author">By Daniel Kariuki</span>
-        <span class="divider">|</span>
-        <span>EcoWatch Magazine</span>
-        <span class="divider">|</span>
-        <span>March 2025</span>
-      </div>
-    </header>
 
-    <!-- Full article content, exactly as provided -->
-    <div class="article-content">
-      <p class="lead">
-        If you ask your grandparents whether the weather feels different now than when they were young, chances are they'll say yes. Longer dry spells. Heavier rains when it does rain. Hotter afternoons that seem to stretch on forever. This isn't just an old person's memory playing tricks — it's climate change, and it's one of the most pressing issues facing our generation today.
-      </p>
+  <!-- Reading progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
 
-      <h2>What's Actually Causing It?</h2>
-      <p>
-        At its core, climate change is caused by an increase in greenhouse gases in our atmosphere, and human beings are largely responsible for this. When we burn fossil fuels like coal, oil, and natural gas to power our cars, factories, and homes, we release carbon dioxide into the air. This gas acts like a blanket around the Earth, trapping heat that would otherwise escape into space. The more we burn, the thicker that blanket gets, and the warmer our planet becomes.
-      </p>
-      <p>
-        Deforestation makes things worse. Trees absorb carbon dioxide, so when we cut down forests for farming, logging, or urban development, we're removing one of nature's best tools for cleaning our air. At the same time, we're releasing the carbon that was stored in those trees.
-      </p>
-      <p>
-        Agriculture plays a role too. Livestock farming, especially cattle, produces methane, another powerful greenhouse gas. Add to this the waste we generate, the industrial processes we rely on, and our growing energy demands, and it becomes clear why global temperatures keep rising year after year.
-      </p>
-
-      <h2>The Effects We're Already Living Through</h2>
-      <p>
-        Climate change isn't some distant threat waiting to happen — it's already here, and its effects touch nearly every part of life.
-      </p>
-      <p>
-        Weather patterns have become unpredictable and extreme. Some regions face intense droughts that destroy crops and dry up water sources, while others are hit with catastrophic flooding and stronger hurricanes. Farmers who once relied on predictable seasons now struggle to know when to plant or harvest, which threatens food security for millions of people.
-      </p>
-      <p>
-        The ice caps and glaciers are melting at alarming rates, causing sea levels to rise. This puts coastal cities and small island nations at real risk of disappearing underwater in the coming decades. For places in the Caribbean and other low-lying regions, this isn't a hypothetical — it's a genuine threat to homes, economies, and entire ways of life.
-      </p>
-      <p>
-        Wildlife is suffering too. As habitats shift or disappear, countless species struggle to adapt or migrate, and many face extinction. Coral reefs, which support a huge portion of marine life, are dying off due to warmer, more acidic oceans in a process called coral bleaching.
-      </p>
-      <p>
-        Human health is affected as well. Rising temperatures contribute to heat-related illnesses, the spread of diseases like malaria and dengue fever into new areas, and worsening air quality that triggers respiratory problems. Vulnerable communities, especially those in developing countries, often bear the heaviest burden despite contributing the least to the problem.
-      </p>
-
-      <h2>Why This Matters to Us</h2>
-      <p>
-        It's easy to feel like climate change is too big a problem for one person to solve, but that mindset is exactly what allows it to continue unchecked. Small actions — reducing waste, conserving energy, supporting reforestation efforts, and pushing for better environmental policies — add up when enough people commit to them.
-      </p>
-      <p>
-        Climate change is not just a scientific issue; it's a human one. It affects the food we eat, the air we breathe, and the future we're building for the next generation. Understanding its causes and effects is the first step toward becoming part of the solution rather than remaining part of the problem.
-      </p>
-      <p>
-        The planet has been sending warnings for decades. The real question now is whether we're finally ready to listen.
-      </p>
-
-      <!-- subtle emphasis on the closing line (optional but keeps design) -->
-      <div class="emphasis-block">
-        “The planet has been sending warnings for decades. The real question now is whether we're finally ready to listen.”
-      </div>
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="/" class="logo">Eco<span>Watch</span></a>
+      <nav class="nav-links">
+        <a href="#">Climate</a>
+        <a href="#">Energy</a>
+        <a href="#">Wildlife</a>
+        <a href="#">About</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Footer with tags / publication info -->
-    <footer class="article-footer">
-      <div class="footer-tag">
-        <span class="pill">#ClimateChange</span>
-        <span class="pill">#Environment</span>
-        <span class="pill">#EcoWatch</span>
+  <main class="article-wrap">
+    <article>
+      <div class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp; Climate
       </div>
-      <div class="footer-tag">
-        <span>© 2025 EcoWatch Magazine</span>
-      </div>
-    </footer>
-  </article>
 
-  <!-- tiny note: the article is complete and self-contained -->
+      <h1>The Storm We Created</h1>
+
+      <p class="dek">
+        Understanding the causes and effects of climate change — and why it's no longer a distant threat.
+      </p>
+
+      <div class="byline-row">
+        <div class="avatar">DK</div>
+        <div class="byline-text">
+          <strong>Daniel Kariuki</strong>
+          <small>
+            EcoWatch Magazine <span class="dot">•</span> March 15, 2025
+            <span class="dot">•</span> 6 min read
+          </small>
+        </div>
+      </div>
+
+      <figure class="hero">
+        <img
+          src="https://images.unsplash.com/photo-1561553590-267fc716698a?w=1600&q=80"
+          alt="Dark storm clouds gathering over a vast landscape, symbolising the growing impact of climate change."
+        />
+        <figcaption>
+          Storm clouds over open country. Photo: Unsplash / public domain.
+        </figcaption>
+      </figure>
+
+      <div class="article-body">
+        <p>
+          If you ask your grandparents whether the weather feels different now than when they were young, chances are they'll say yes. Longer dry spells. Heavier rains when it does rain. Hotter afternoons that seem to stretch on forever. This isn't just an old person's memory playing tricks — it's climate change, and it's one of the most pressing issues facing our generation today.
+        </p>
+
+        <h2>What's Actually Causing It?</h2>
+        <p>
+          At its core, climate change is caused by an increase in greenhouse gases in our atmosphere, and human beings are largely responsible for this. When we burn fossil fuels like coal, oil, and natural gas to power our cars, factories, and homes, we release carbon dioxide into the air. This gas acts like a blanket around the Earth, trapping heat that would otherwise escape into space. The more we burn, the thicker that blanket gets, and the warmer our planet becomes.
+        </p>
+        <p>
+          Deforestation makes things worse. Trees absorb carbon dioxide, so when we cut down forests for farming, logging, or urban development, we're removing one of nature's best tools for cleaning our air. At the same time, we're releasing the carbon that was stored in those trees.
+        </p>
+        <p>
+          Agriculture plays a role too. Livestock farming, especially cattle, produces methane, another powerful greenhouse gas. Add to this the waste we generate, the industrial processes we rely on, and our growing energy demands, and it becomes clear why global temperatures keep rising year after year.
+        </p>
+
+        <h2>The Effects We're Already Living Through</h2>
+        <p>
+          Climate change isn't some distant threat waiting to happen — it's already here, and its effects touch nearly every part of life.
+        </p>
+        <p>
+          Weather patterns have become unpredictable and extreme. Some regions face intense droughts that destroy crops and dry up water sources, while others are hit with catastrophic flooding and stronger hurricanes. Farmers who once relied on predictable seasons now struggle to know when to plant or harvest, which threatens food security for millions of people.
+        </p>
+        <p>
+          The ice caps and glaciers are melting at alarming rates, causing sea levels to rise. This puts coastal cities and small island nations at real risk of disappearing underwater in the coming decades. For places in the Caribbean and other low-lying regions, this isn't a hypothetical — it's a genuine threat to homes, economies, and entire ways of life.
+        </p>
+        <p>
+          Wildlife is suffering too. As habitats shift or disappear, countless species struggle to adapt or migrate, and many face extinction. Coral reefs, which support a huge portion of marine life, are dying off due to warmer, more acidic oceans in a process called coral bleaching.
+        </p>
+        <p>
+          Human health is affected as well. Rising temperatures contribute to heat-related illnesses, the spread of diseases like malaria and dengue fever into new areas, and worsening air quality that triggers respiratory problems. Vulnerable communities, especially those in developing countries, often bear the heaviest burden despite contributing the least to the problem.
+        </p>
+
+        <h2>Why This Matters to Us</h2>
+        <p>
+          It's easy to feel like climate change is too big a problem for one person to solve, but that mindset is exactly what allows it to continue unchecked. Small actions — reducing waste, conserving energy, supporting reforestation efforts, and pushing for better environmental policies — add up when enough people commit to them.
+        </p>
+        <p>
+          Climate change is not just a scientific issue; it's a human one. It affects the food we eat, the air we breathe, and the future we're building for the next generation. Understanding its causes and effects is the first step toward becoming part of the solution rather than remaining part of the problem.
+        </p>
+
+        <blockquote class="pullquote">
+          The planet has been sending warnings for decades. The real question now is whether we're finally ready to listen.
+        </blockquote>
+      </div>
+
+      <!-- Share row -->
+      <div class="share-row">
+        <span class="share-label">Share this story</span>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://storm-notes.onrender.com/" target="_blank" rel="noopener">Twitter / X</a>
+        <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://storm-notes.onrender.com/" target="_blank" rel="noopener">Facebook</a>
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://storm-notes.onrender.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <button class="share-btn" onclick="navigator.clipboard.writeText('https://storm-notes.onrender.com/');this.textContent='Link copied ✓'">Copy link</button>
+      </div>
+
+      <!-- Author box -->
+      <aside class="author-box">
+        <div class="avatar">DK</div>
+        <div>
+          <h3>Daniel Kariuki</h3>
+          <p>Environment writer at EcoWatch Magazine, covering climate science, energy, and conservation across East Africa and beyond.</p>
+        </div>
+      </aside>
+
+      <!-- Related articles -->
+      <section class="related">
+        <h2>More from EcoWatch</h2>
+        <div class="related-grid">
+          <a class="related-card" href="#">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80" alt="Fog rolling over a forested valley at sunrise." />
+            <div class="related-card-body">
+              <span class="tag">Forests</span>
+              <h3>What Reforestation Actually Looks Like on the Ground</h3>
+            </div>
+          </a>
+          <a class="related-card" href="#">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80" alt="Solar panels catching sunlight in a green field." />
+            <div class="related-card-body">
+              <span class="tag">Energy</span>
+              <h3>Solar Is Cheaper Than Coal. So Why Isn't It Everywhere?</h3>
+            </div>
+          </a>
+          <a class="related-card" href="#">
+            <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&q=80" alt="Sunlight filtering through green leaves." />
+            <div class="related-card-body">
+              <span class="tag">Wildlife</span>
+              <h3>The Species We're Losing Before We've Named Them</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <h3>Get one story like this every week</h3>
+        <p>No spam. Just reporting on the planet, every Friday.</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+          <input type="email" placeholder="you@example.com" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    © 2025 EcoWatch Magazine &nbsp;·&nbsp; <a href="#top">Back to top</a> &nbsp;·&nbsp; <a href="#">Privacy</a>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+  <script>
+    // Reading progress bar
+    const progressBar = document.getElementById('progressBar');
+    const backToTop = document.getElementById('backToTop');
+
+    function updateScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = percent + '%';
+
+      if (scrollTop > 400) backToTop.classList.add('visible');
+      else backToTop.classList.remove('visible');
+    }
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    updateScroll();
+  </script>
+
 </body>
 </html>
